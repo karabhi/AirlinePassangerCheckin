@@ -8,13 +8,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlightsComponent } from './flights/flights.component';
 import { PassengersComponent } from './passengers/passengers.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FlightItemComponent } from './flights/flight-item/flight-item.component';
+import { FlightService } from './flights/flight.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FlightsComponent,
-    PassengersComponent
+    PassengersComponent,
+    FlightItemComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [FlightService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
