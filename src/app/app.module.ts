@@ -10,6 +10,11 @@ import { PassengersComponent } from './passengers/passengers.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FlightItemComponent } from './flights/flight-item/flight-item.component';
 import { FlightService } from './flights/flight.service';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+import { PassengerService } from './passengers/passenger.service';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -23,9 +28,13 @@ import { FlightService } from './flights/flight.service';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSortModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatButtonModule
   ],
-  providers: [FlightService],
+  providers: [FlightService,PassengerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
