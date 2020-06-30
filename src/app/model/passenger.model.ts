@@ -7,6 +7,7 @@ export class Passenger{
         public flightNo : string,
         public wheelChair : boolean,
         public isInfant : boolean,
-        public ancillaryServices : boolean
+        public ancillaryServices : boolean,
+        public seatNo : string
     ){}
 }

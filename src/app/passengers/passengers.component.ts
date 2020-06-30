@@ -17,14 +17,14 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class PassengersComponent implements OnInit {
 
-  public passengers : Passenger[]=this.passengerService.getPassengers();;
+  public passengers : Passenger[]=this.passengerService.getPassengers();
   //private subscription : Subscription;
 
   displayedColumns: string[] = ['passportNumber', 'name', 'age', 'gender', 
-  'flightNo', 'wheelChair', 'isInfant', 'ancillaryServices', 'seat'];
+  'flightNo', 'wheelChair', 'isInfant', 'ancillaryServices', 'seatNo'];
 
   dataSource = new MatTableDataSource(this.passengers);
-  dataSource2 = new MatTableDataSource<Passenger>(this.passengers);
+  //dataSource2 = new MatTableDataSource<Passenger>(this.passengers);
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -34,5 +34,6 @@ export class PassengersComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    //console.log(this.dataSource)
   }
 }

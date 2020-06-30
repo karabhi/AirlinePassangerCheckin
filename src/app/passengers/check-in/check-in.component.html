@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-md-4" style="margin-bottom: 6px;margin-top: 80px;">
+        <h1 [ngStyle]="{'color' : '#b80ba9'}">Choose seat to be alloted:-</h1>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<!-- <div class="row">
+    <div class="col-md-4">
+        <h3 [ngStyle]="{'color' : '#07b575'}">
+            Current Seat : <span class="glyphicon glyphicon-saved"
+                style="font-size:x-large;color:#f21b1b">{{currentPassengerSeat}}</span>
+        </h3>
+    </div>
+    <div class="col-md-4 pull-right">
+        <button mat-raised-button color="primary" style="margin-top: 5px;margin-bottom: 5px;"
+            [routerLink]="['/passengers']">Save and Return to Passenger List</button>
+    </div>
+</div> -->
+
+
+<!-- Column Numbering code -->
+<!-- <div class="row">
+    <div class="col-md-4">
+        <h2 style="margin-left: 35px;">A</h2>
+        <h2 style="margin-left: 75px;">B</h2>
+        <h2 style="margin-left: 75px;">C</h2>
+    </div>
+    <div class="col-md-4">
+        <h2 style="margin-left: 135px;">D</h2>
+        <h2 style="margin-left: 75px;">E</h2>
+        <h2 style="margin-left: 75px;">F</h2>
+    </div>
+</div> -->
+
+<!-- Seat Arrangement Code -->
+<div class="row">
+    <div class="col-md-9">
+        <div class="row" *ngFor="let rowNumb of arrayN(numberOfRows)">
+            <div class="col-md-5">
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'A')}"
+                        (click)="onSeatSelected((rowNumb+1)+'A')">
+                        {{rowNumb+1}}A
+                    </div>
+                </div>
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'B')}"
+                        (click)="onSeatSelected((rowNumb+1)+'B')">
+                        {{rowNumb+1}}B
+                    </div>
+                </div>
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'C')}"
+                        (click)="onSeatSelected((rowNumb+1)+'C')">
+                        {{rowNumb+1}}C
+                    </div>
+                </div>
+                <br class="clearBoth" />
+            </div>
+            <!-- <div class="col-md-1">
+                    <h2 style="margin-top: 30px;">{{rowNumb+1}}</h2>
+                </div> -->
+            <div class="col-md-5">
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'D')}"
+                        (click)="onSeatSelected((rowNumb+1)+'D')">
+                        {{rowNumb+1}}D
+                    </div>
+                </div>
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'E')}"
+                        (click)="onSeatSelected((rowNumb+1)+'E')">
+                        {{rowNumb+1}}E
+                    </div>
+                </div>
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'F')}"
+                        (click)="onSeatSelected((rowNumb+1)+'F')">
+                        {{rowNumb+1}}F
+                    </div>
+                </div>
+                <br class="clearBoth" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-3 affix" style="left: 700px;">
+        <h3 [ngStyle]="{'color' : '#07b575'}">
+            Current Seat : <span class="glyphicon glyphicon-saved"
+                style="font-size:x-large;color:#1d55ce;display: inline;">{{currentPassengerSeat}}</span>
+        </h3>
+        <mat-divider></mat-divider>
+        <button mat-raised-button color="primary" style="margin-top: 5px;margin-bottom: 5px;"
+            [routerLink]="['/passengers']">Save and Return</button>
+    </div>
+</div>
