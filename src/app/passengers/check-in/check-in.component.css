@@ -47,10 +47,10 @@
      cursor: pointer;
   }
 
-  #div-inline:hover .blocked-seat{
-    /* background: rgb(221, 97, 194); */
-    /* pointer-events: none; */
- }
+  /* #div-inline:hover .blocked-seat{
+    background: rgb(221, 97, 194);
+    pointer-events: none;
+ } */
   
   .clearBoth { clear:both; }
   
