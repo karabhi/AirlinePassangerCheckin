@@ -20,6 +20,7 @@ export class CheckInComponent implements OnInit {
   numberOfRows : number = 30;
   flightPassangers : Passenger[];
   blockedSeats : string[] = [];
+  // seats not used
   seats : Seat[] = [];
   clicked : boolean = false;
   currentPassengerSeat : string;
@@ -80,6 +81,10 @@ export class CheckInComponent implements OnInit {
         this.currentPassengerSeat = seat
       }
     )
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
 }

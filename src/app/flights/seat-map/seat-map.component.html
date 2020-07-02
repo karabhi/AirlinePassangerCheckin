@@ -1,0 +1,128 @@
+<!-- Heading -->
+
+<h1 style="margin-bottom: 26px;margin-top: 80px;">Seat map for flight: {{flightNumber}}</h1>
+
+
+<!-- Seatmap -->
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="row" *ngFor="let rowNumb of arrayN(numberOfRows)">
+            
+            <!-- Left Rows - Column A,B,C -->
+            <div class="col-md-6">
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" 
+                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'A')}"
+                        (click)="onSeatSelected((rowNumb+1)+'A')">
+                        {{rowNumb+1}}A
+                    </div>
+                </div>
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" 
+                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'B')}"
+                        (click)="onSeatSelected((rowNumb+1)+'B')">
+                        {{rowNumb+1}}B
+                    </div>
+                </div>
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" 
+                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'C')}"
+                        (click)="onSeatSelected((rowNumb+1)+'C')">
+                        {{rowNumb+1}}C
+                    </div>
+                </div>
+                <br class="clearBoth" />
+            </div>
+
+            <!-- Right rows - column D,E,F -->
+            <div class="col-md-6">
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" 
+                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'D')}"
+                        (click)="onSeatSelected((rowNumb+1)+'D')">
+                        {{rowNumb+1}}D
+                    </div>
+                </div>
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" 
+                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'E')}"
+                        (click)="onSeatSelected((rowNumb+1)+'E')">
+                        {{rowNumb+1}}E
+                    </div>
+                </div>
+                <div class="outer-seat" id="div-inline">
+                    <div class="inner-seat" 
+                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'F')}"
+                        (click)="onSeatSelected((rowNumb+1)+'F')">
+                        {{rowNumb+1}}F
+                    </div>
+                </div>
+                <br class="clearBoth" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Passenger seat details -->
+
+    <div class="col-md-4 affix" style="left: 65%">
+        <mat-card class="passenger-detail-card" *ngIf="passengerOfSeatSelected!=null">
+            <mat-card-header>
+                <div *ngIf="passengerOfSeatSelected.gender=='MALE'" mat-card-avatar class="example-header-image-male"></div>
+                <div *ngIf="passengerOfSeatSelected.gender=='FEMALE'" mat-card-avatar class="example-header-image-female"></div>
+                <mat-card-title>{{passengerOfSeatSelected.name}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content style="margin-top: 20px;">
+                <h3><b>Details :</b> </h3>
+                <ul>
+                    <li>Passport Number : {{passengerOfSeatSelected.passportNumber}}</li>
+                    <li>Age : {{passengerOfSeatSelected.age}}</li>
+                    <li>Gender : {{passengerOfSeatSelected.gender}}</li>
+
+                    <!-- Wheelchair detail -->
+                    <li><i class="fas fa-wheelchair"></i> Wheelchair: 
+                        <i class="fas fa-check-circle" *ngIf="passengerOfSeatSelected.wheelChair"></i>
+                        <i class="fas fa-times-circle" *ngIf="!passengerOfSeatSelected.wheelChair"></i>
+                    </li>
+
+                    <!-- Infant Detail -->
+                    <li><i class="fas fa-baby"></i> Infant: 
+                        <i class="fas fa-check-circle" *ngIf="passengerOfSeatSelected.isInfant"></i>
+                        <i class="fas fa-times-circle" *ngIf="!passengerOfSeatSelected.isInfant"></i>
+                    </li>
+                </ul>
+                <mat-divider></mat-divider>
+
+                <div *ngIf="passengerOfSeatSelected.ancillaryServices">
+                <h3><b>Ancillary Services : </b> </h3>
+                <ul>
+                    <!-- Food service detail -->
+                    <li><i class="fas fa-utensils"></i> Special Meal: 
+                        <i class="fas fa-check-circle" *ngIf="passengerSelectedAncillaryServices.specialMeal"></i>
+                        <i class="fas fa-times-circle" *ngIf="!passengerSelectedAncillaryServices.specialMeal"></i>
+                    </li>
+
+                    <!-- Extra luggage Service Detail -->
+                    <li><i class="fas fa-luggage-cart"></i> Extra Luggage: 
+                        <i class="fas fa-check-circle" *ngIf="passengerSelectedAncillaryServices.extraLuggage"></i>
+                        <i class="fas fa-times-circle" *ngIf="!passengerSelectedAncillaryServices.extraLuggage"></i>
+                    </li>
+
+                    <!-- Leg Space Service Detail -->
+                    <li><i class="fas fa-shoe-prints"></i> Extra leg space: 
+                        <i class="fas fa-check-circle" *ngIf="passengerSelectedAncillaryServices.extraLegSpace"></i>
+                        <i class="fas fa-times-circle" *ngIf="!passengerSelectedAncillaryServices.extraLegSpace"></i>
+                    </li>
+                </ul>
+                </div>
+
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button color = "warn">EMERGENCY</button>
+              </mat-card-actions>
+        </mat-card>
+        <button mat-raised-button color="accent" style="margin-top: 30px;" [routerLink] = "['/flights']">
+             <i class="fas fa-undo"></i> Check for another flight
+        </button>
+    </div>
+</div>

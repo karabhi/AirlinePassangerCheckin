@@ -1,5 +1,5 @@
 <!-- <a style="cursor: pointer;" [routerLink]="[index]" routerLinkActive="active" class="list-group-item clearfix" > -->
-    <a style="cursor: pointer;" class="list-group-item clearfix" >
+<a style="cursor: pointer;" class="list-group-item clearfix" [routerLink] = "['/flights','seatmap',flight.id]">
     <div class="pull-left">
         <h3 class="list-group-item-heading" [ngStyle]="{color : '#EC4700'}">{{flight.departureTime}}</h3>
         <h4 class="list-group-item-text">Flight Code: <b>{{flight.id}}</b></h4>

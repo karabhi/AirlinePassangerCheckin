@@ -1,3 +1,11 @@
 table {
     width: 100%;
   }
+
+  .fa-check-circle{
+    color: rgb(88, 235, 88)
+  }
+
+  .fa-times-circle{
+    color : rgb(212, 56, 56)
+  }

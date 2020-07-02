@@ -35,19 +35,28 @@
               <!-- Wheelchair Column -->
               <ng-container matColumnDef="wheelChair">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Wheelchair</th>
-                <td mat-cell *matCellDef="let element"> {{element.wheelChair}} </td>
+                <td mat-cell *matCellDef="let element"> 
+                  <i class="fas fa-check-circle" *ngIf="element.wheelChair"></i>
+                  <i class="fas fa-times-circle" *ngIf="!element.wheelChair"></i>
+                 </td>
               </ng-container>
 
               <!-- Infant Column -->
               <ng-container matColumnDef="isInfant">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Infant</th>
-                <td mat-cell *matCellDef="let element"> {{element.isInfant}} </td>
+                <td mat-cell *matCellDef="let element"> 
+                  <i class="fas fa-check-circle" *ngIf="element.isInfant"></i>
+                  <i class="fas fa-times-circle" *ngIf="!element.isInfant"></i>
+                 </td>
               </ng-container>
 
               <!-- Ancillary Service Column -->
               <ng-container matColumnDef="ancillaryServices">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Ancillary Services</th>
-                <td mat-cell *matCellDef="let element"> {{element.ancillaryServices}} </td>
+                <td mat-cell *matCellDef="let element"> 
+                  <i class="fas fa-check-circle" *ngIf="element.ancillaryServices"></i>
+                  <i class="fas fa-times-circle" *ngIf="!element.ancillaryServices"></i>
+                 </td>
               </ng-container>
               
               <!-- Seat Number/ CheckIn / Change Seat Button -->

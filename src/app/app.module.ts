@@ -15,9 +15,12 @@ import {MatTableModule} from '@angular/material/table';
 import { PassengerService } from './passengers/passenger.service';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDividerModule} from '@angular/material/divider';
 import { CheckInComponent } from './passengers/check-in/check-in.component';
+import { SeatMapComponent } from './flights/seat-map/seat-map.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { CheckInComponent } from './passengers/check-in/check-in.component';
     FlightsComponent,
     PassengersComponent,
     FlightItemComponent,
-    CheckInComponent
+    CheckInComponent,
+    SeatMapComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,8 @@ import { CheckInComponent } from './passengers/check-in/check-in.component';
     MatPaginatorModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCardModule
   ],
   providers: [FlightService,PassengerService],
   bootstrap: [AppComponent]
