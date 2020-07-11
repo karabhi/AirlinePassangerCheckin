@@ -4,33 +4,6 @@
     </div>
 </div>
 <mat-divider></mat-divider>
-<!-- <div class="row">
-    <div class="col-md-4">
-        <h3 [ngStyle]="{'color' : '#07b575'}">
-            Current Seat : <span class="glyphicon glyphicon-saved"
-                style="font-size:x-large;color:#f21b1b">{{currentPassengerSeat}}</span>
-        </h3>
-    </div>
-    <div class="col-md-4 pull-right">
-        <button mat-raised-button color="primary" style="margin-top: 5px;margin-bottom: 5px;"
-            [routerLink]="['/passengers']">Save and Return to Passenger List</button>
-    </div>
-</div> -->
-
-
-<!-- Column Numbering code -->
-<!-- <div class="row">
-    <div class="col-md-4">
-        <h2 style="margin-left: 35px;">A</h2>
-        <h2 style="margin-left: 75px;">B</h2>
-        <h2 style="margin-left: 75px;">C</h2>
-    </div>
-    <div class="col-md-4">
-        <h2 style="margin-left: 135px;">D</h2>
-        <h2 style="margin-left: 75px;">E</h2>
-        <h2 style="margin-left: 75px;">F</h2>
-    </div>
-</div> -->
 
 <!-- Seat Arrangement Code -->
 <div class="row">
@@ -91,13 +64,26 @@
     </div>
 
 
-    <div class="col-md-3 affix" style="left: 80%">
-        <h3 [ngStyle]="{'color' : '#07b575'}">
-            Current Seat : <span class="glyphicon glyphicon-saved"
-                style="font-size:x-large;color:#1d55ce;display: inline;">{{currentPassengerSeat}}</span>
-        </h3>
-        <mat-divider></mat-divider>
-        <button mat-raised-button color="primary" style="margin-top: 5px;margin-bottom: 5px;"
-            [routerLink]="['/passengers']">Save and Return</button>
+    <div class="col-md-3 affix" style="left: 70%">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>
+                    <i class="fas fa-chair" style="color: darkslateblue;"></i> 
+                    Current Seat : 
+                    <div style="background-color: deeppink;color: floralwhite; width: 25px; display: inline-block;">{{currentPassengerSeat}} </div>
+                </mat-card-title>
+            </mat-card-header>
+            <!-- <h3 [ngStyle]="{'color' : '#07b575'}">
+                Current Seat : <span class="glyphicon glyphicon-saved"
+                    style="font-size:x-large;color:#1d55ce;display: inline;">{{currentPassengerSeat}}</span>
+            </h3> -->
+            <mat-card-actions>
+                <button mat-raised-button color="primary"
+                        style="margin-top: 5px;margin-bottom: 5px;margin-left: 20px;"
+                        [routerLink]="['/passengers']">
+                    Save and Return
+                </button>
+              </mat-card-actions>
+        </mat-card>
     </div>
 </div>

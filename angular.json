@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "airline-checkin-app"
+  "defaultProject": "airline-checkin-app",
+  "cli": {
+    "analytics": "6fd99a09-1f7d-4253-ae8f-a21c04fc5913"
+  }
 }

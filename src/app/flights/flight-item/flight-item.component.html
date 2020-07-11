@@ -1,11 +1,12 @@
 <!-- <a style="cursor: pointer;" [routerLink]="[index]" routerLinkActive="active" class="list-group-item clearfix" > -->
-<a style="cursor: pointer;" class="list-group-item clearfix" [routerLink] = "['/flights','seatmap',flight.id]">
+<mat-card style="cursor: pointer;" class="list-group-item clearfix" [routerLink] = "['/flights','seatmap',flight.id]">
     <div class="pull-left">
-        <h3 class="list-group-item-heading" [ngStyle]="{color : '#EC4700'}">{{flight.departureTime}}</h3>
+        <h3 class="list-group-item-heading" [ngStyle]="{color : '#EC4700'}">
+            <i class="fas fa-clock"></i> {{flight.departureTime}}</h3>
         <h4 class="list-group-item-text">Flight Code: <b>{{flight.id}}</b></h4>
         <h4 class="list-group-item-text">Departure Airport: <b>{{flight.departureAirport}}</b></h4>  
     </div>
     <span class="pull-right">
         <img src={{flight.imagePath}} alt="" class="img-responsive" style="max-height: 120px;">
     </span>
-</a>
+</mat-card>
