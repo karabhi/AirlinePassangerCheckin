@@ -8,7 +8,7 @@ private flights : Flight[] = [
     new Flight(
         'MT-6713',
         'CCU',
-        '12:00',
+        '22:00',
         '../../../assets/flight1.jpg'
     ),
     new Flight(
@@ -20,7 +20,7 @@ private flights : Flight[] = [
     new Flight(
         'MT-4800',
         'BOM',
-        '22:00',
+        '12:00',
         '../../../assets/flight3.jpg'
     )
 ]
