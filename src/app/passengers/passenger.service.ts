@@ -94,7 +94,7 @@ export class PassengerService implements OnInit{
     addPassengerServices(service : AncillaryService){
         this.ancillaryServices.push(service);
         this.http.post("http://localhost:3000/ancillaryservices",{
-            "id": service.passportNumber,
+            "id": service.passportNumber.toString(),
             "specialMeal": service.specialMeal,
             "extraLuggage": service.extraLuggage,
             "extraLegSpace": service.extraLegSpace
