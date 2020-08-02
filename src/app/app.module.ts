@@ -29,6 +29,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PassengerEditComponent } from './passengers/passenger-edit/passenger-edit.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { LoginService } from './login/login.service';
     MatRadioModule,
     MatSelectModule,
     MatCheckboxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [FlightService,PassengerService,LoginService],
   bootstrap: [AppComponent]

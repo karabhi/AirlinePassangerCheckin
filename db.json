@@ -20,7 +20,7 @@
       "wheelChair": true,
       "isInfant": false,
       "ancillaryServices": true,
-      "seatNo": "1F"
+      "seatNo": "4E"
     },
     {
       "id": "7456837465",
@@ -42,7 +42,18 @@
       "wheelChair": true,
       "isInfant": true,
       "ancillaryServices": true,
-      "seatNo": "1F"
+      "seatNo": "3C"
+    },
+    {
+      "id": "6356234",
+      "name": "abc",
+      "age": "66",
+      "gender": "MALE",
+      "flightNo": "MT-6713",
+      "wheelChair": true,
+      "isInfant": false,
+      "ancillaryServices": false,
+      "seatNo": "1C"
     }
   ],
   "ancillaryServices": [
@@ -68,6 +79,12 @@
       "id": "874573456",
       "specialMeal": false,
       "extraLuggage": true,
+      "extraLegSpace": false
+    },
+    {
+      "id": "6356234",
+      "specialMeal": false,
+      "extraLuggage": false,
       "extraLegSpace": false
     }
   ],
