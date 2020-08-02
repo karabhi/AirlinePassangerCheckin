@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,9 +19,16 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatInputModule} from '@angular/material/input';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule, MatCheckboxChange} from '@angular/material/checkbox';
+import { MatSelectModule } from "@angular/material/select";
 import { CheckInComponent } from './passengers/check-in/check-in.component';
 import { SeatMapComponent } from './flights/seat-map/seat-map.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PassengerEditComponent } from './passengers/passenger-edit/passenger-edit.component';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
 
 @NgModule({
   declarations: [
@@ -31,11 +39,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FlightItemComponent,
     CheckInComponent,
     SeatMapComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PassengerEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatSortModule,
@@ -44,9 +55,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatButtonModule,
     MatSnackBarModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    ReactiveFormsModule
   ],
-  providers: [FlightService,PassengerService],
+  providers: [FlightService,PassengerService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

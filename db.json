@@ -1,0 +1,77 @@
+{
+  "passengers": [
+    {
+      "id": "544726664",
+      "name": "Mr. Albert Einstein",
+      "age": "42",
+      "gender": "MALE",
+      "flightNo": "MT-6713",
+      "wheelChair": false,
+      "isInfant": false,
+      "ancillaryServices": true,
+      "seatNo": "2C"
+    },
+    {
+      "id": "736388945",
+      "name": "Satyendra Nath Bose",
+      "age": "62",
+      "gender": "MALE",
+      "flightNo": "MT-2915",
+      "wheelChair": true,
+      "isInfant": false,
+      "ancillaryServices": true,
+      "seatNo": "1F"
+    },
+    {
+      "id": "7456837465",
+      "name": "John Doe",
+      "age": "44",
+      "gender": "MALE",
+      "flightNo": "MT-6713",
+      "wheelChair": true,
+      "isInfant": true,
+      "ancillaryServices": true,
+      "seatNo": "1E"
+    }
+  ],
+  "ancillaryServices": [
+    {
+      "id": "544726664",
+      "specialMeal": true,
+      "extraLuggage": true,
+      "extraLegSpace": true
+    },
+    {
+      "id": "736388945",
+      "specialMeal": false,
+      "extraLuggage": true,
+      "extraLegSpace": false
+    },
+    {
+      "id": 7456837465,
+      "specialMeal": true,
+      "extraLuggage": true,
+      "extraLegSpace": true
+    }
+  ],
+  "flights": [
+    {
+      "id": "MT-6713",
+      "departureAirport": "CCU",
+      "departureTime": "12:00",
+      "imagePath": "../../../assets/flight1.jpg"
+    },
+    {
+      "id": "MT-2915",
+      "departureAirport": "BLR",
+      "departureTime": "18:00",
+      "imagePath": "../../../assets/flight2.jpg"
+    },
+    {
+      "id": "MT-4800",
+      "departureAirport": "BOM",
+      "departureTime": "22:00",
+      "imagePath": "../../../assets/flight3.jpg"
+    }
+  ]
+}

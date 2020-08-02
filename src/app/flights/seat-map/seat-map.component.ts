@@ -24,7 +24,7 @@ export class SeatMapComponent implements OnInit {
   passengerSelectedAncillaryServices : AncillaryService;
   seatSelectedFlag : boolean = false;
 
-  numberOfRows : number = 30;
+  numberOfRows : number = 21;
   flightPassangers : Passenger[];
   blockedSeats : string[] = [];
   // seats : Seat[] = [];
@@ -44,7 +44,6 @@ export class SeatMapComponent implements OnInit {
     //rest of these lines in ngOnInit() are copied and used from checkin component
     //using the above local copies of passengers nad ancillary services preferred
     this.flightPassangers = this.passengerService.getPassengersOfFlight(this.flightNumber);
-    //console.log(this.flightPassangers);
     
     this.route.params.subscribe(
       (params) => {
@@ -70,17 +69,13 @@ export class SeatMapComponent implements OnInit {
       });
     }
 
-    
     //on clicking occupied seat--->
     else{
     //getting passenger details
     this.passengerOfSeatSelected = this.passengers.find(x => ( (x.seatNo == seat) && (x.flightNo==this.flightNumber) ) );
-    //console.log(this.passengerOfSeatSelected);
 
     //getting ancillary service details
-    this.passengerSelectedAncillaryServices = this.ancillaryServices.find(x => x.passportNumber == this.passengerOfSeatSelected.passportNumber)
-    //console.log(this.passengerSelectedAncillaryServices);
-    // this.passengerSelectedAncillaryServices = this.passengerService.getAncillaryServiceByFlightAndSeatNo(this.flightNumber,seat);
+    this.passengerSelectedAncillaryServices = this.ancillaryServices.find(x => x.passportNumber == this.passengerOfSeatSelected.passportNumber);
     }
   }
 

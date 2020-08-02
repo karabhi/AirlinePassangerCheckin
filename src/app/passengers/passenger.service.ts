@@ -1,7 +1,8 @@
-import { Injectable, ViewChild } from "@angular/core";
+import { Injectable, ViewChild, OnInit } from "@angular/core";
 import { Passenger } from '../model/passenger.model';
 import { Subject } from 'rxjs';
 import { AncillaryService } from '../model/ancillary-service.model';
+import { HttpClient } from "@angular/common/http";
 
 
 // const passengers2 : Passenger[] = [
@@ -9,36 +10,25 @@ import { AncillaryService } from '../model/ancillary-service.model';
 // ]
 
 @Injectable()
-export class PassengerService{
+export class PassengerService implements OnInit{
     
     passengerSeatChanged = new Subject<String>();
-    //startedEditing = new Subject<number>();
+    //passengersChanged = new Subject<Passenger[]>();
     
-    private passengers = [
-        new Passenger('544726664','Albert Einstein','42','MALE','MT-6713',false,false,true,null),
-        new Passenger('736388945','Satyendra Nath Bose','62','MALE','MT-2915',true,false,true,null),
-        new Passenger('897151781','Marie Curie','31','FEMALE','MT-4800',false,false,true,null),
-        new Passenger('897178723','Nicolas Tesla','53','MALE','MT-6713',false,false,false,null),
-        new Passenger('987854571','Richard Feynman','47','MALE','MT-4800',false,false,true,null),
-        new Passenger('210828528','Rosalind Franklin','55','FEMALE','MT-2915',true,false,false,'16C'),
-        new Passenger('116657556','Ada Lovelace','28','FEMALE','MT-4800',false,false,true,null),
-        new Passenger('629977025','Erwin Schrödinger','38','MALE','MT-6713',false,false,false,null),
-        new Passenger('344416781','Mary Anning','45','FEMALE','MT-2915',false,false,true,null),
-        new Passenger('905455962','Prafulla Chandra Ray','62','MALE','MT-6713',true,false,true,'28A')
-    ];
+    passengers:Passenger[]=[];
+    ancillaryServices:AncillaryService[] = [];
 
-    private ancillaryServices = [
-        new AncillaryService('544726664',true,true,true),
-        new AncillaryService('736388945',false,true,false),
-        new AncillaryService('897151781',true,true,false),
-        new AncillaryService('987854571',false,true,true),
-        new AncillaryService('116657556',false,true,false),
-        new AncillaryService('344416781',true,false,true),
-        new AncillaryService('905455962',true,false,false)
-    ]
+    constructor(private http : HttpClient){}
+
+    ngOnInit(){}
 
     getPassengers(){
         return this.passengers.slice();
+    }
+
+    getPassenger(passportNumber : string){
+        console.log(this.passengers.find(passenger => passenger.passportNumber == passportNumber))
+        return this.passengers.find(passenger => passenger.passportNumber == passportNumber)
     }
 
     getPassengersOfFlight(flightNo : string):Passenger[]{
@@ -49,20 +39,83 @@ export class PassengerService{
         return this.passengers.find(passenger => passenger.passportNumber === passId).seatNo;
     }
 
+    // -------------------------Update Operation--------------------------------
     setPassengerSeat(passengerId:string,newSeat:string){
-        this.passengers.find(passenger => passenger.passportNumber === passengerId).seatNo = newSeat;
-        this.passengerSeatChanged.next(
-            this.passengers.find(x => x.passportNumber == passengerId).seatNo
-        )
+        let passengerSeatAssigned = this.passengers.find(passenger => passenger.passportNumber === passengerId);
+        passengerSeatAssigned.seatNo = newSeat;
+        this.passengerSeatChanged.next(newSeat);
+
+        this.http.put("http://localhost:3000/passengers/"+passengerId,{
+            "id": passengerSeatAssigned.passportNumber,
+            "name": passengerSeatAssigned.name,
+            "age": passengerSeatAssigned.age,
+            "gender": passengerSeatAssigned.gender,
+            "flightNo": passengerSeatAssigned.flightNo,
+            "wheelChair": passengerSeatAssigned.wheelChair,
+            "isInfant": passengerSeatAssigned.isInfant,
+            "ancillaryServices": passengerSeatAssigned.ancillaryServices,
+            "seatNo": passengerSeatAssigned.seatNo
+        }).subscribe((res)=>console.log("set seat entered"));
     }
+
 
     getAncillaryServices(){
         return this.ancillaryServices.slice();
     }
 
+    getAncillaryService(passNo:string){
+        return this.ancillaryServices.find(service => service.passportNumber == passNo)
+    }
+
     getAncillaryServiceByFlightAndSeatNo(flightNo : string, seatNo : string){
         var passportNumber = this.passengers.find(x => (x.flightNo == flightNo)&&(x.seatNo == seatNo)).passportNumber
         return this.ancillaryServices.find(x => x.passportNumber == passportNumber)
+    }
+
+
+    //----------------------------------------POST/DELETE OPERATIONS----------------------------------------------------------
+    addPassenger(passenger : Passenger ){
+        this.passengers.push(passenger);
+        
+        this.http.post("http://localhost:3000/passengers",{
+            "id": passenger.passportNumber,
+            "name": passenger.name,
+            "age": passenger.age,
+            "gender": passenger.gender,
+            "flightNo": passenger.flightNo,
+            "wheelChair": passenger.wheelChair,
+            "isInfant": passenger.isInfant,
+            "ancillaryServices": passenger.ancillaryServices,
+            "seatNo": passenger.seatNo
+        }).subscribe((res)=>console.log("add passenger entered"));
+        
+    }
+
+    addPassengerServices(service : AncillaryService){
+        this.ancillaryServices.push(service);
+        this.http.post("http://localhost:3000/ancillaryservices",{
+            "id": service.passportNumber,
+            "specialMeal": service.specialMeal,
+            "extraLuggage": service.extraLuggage,
+            "extraLegSpace": service.extraLegSpace
+        }).subscribe((res)=>console.log("add ancillary service entered"));
+    }
+
+    deletePassenger(passportNumber:string){
+        var passengerExists = this.passengers.find(x=>x.passportNumber==passportNumber);
+        if(passengerExists){
+            var index = this.passengers.indexOf(passengerExists);
+            this.passengers.splice(index,1);
+            this.http.delete("http://localhost:3000/passengers/"+passportNumber).subscribe((res)=>console.log("delete passenger entered"));
+            //console.log(passengerExists);
+        }
+        var ancillaryExists = this.ancillaryServices.find(x=>x.passportNumber==passportNumber);
+        if(ancillaryExists){
+            var index = this.ancillaryServices.indexOf(ancillaryExists);
+            this.ancillaryServices.splice(index,1);
+            this.http.delete("http://localhost:3000/ancillaryservices/"+passportNumber).subscribe((res)=>console.log("delete service entered"));
+            //console.log(ancillaryExists);
+        }
     }
 
 }

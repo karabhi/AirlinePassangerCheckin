@@ -17,7 +17,7 @@ export class CheckInComponent implements OnInit {
                private route : ActivatedRoute,
                private _snackBar: MatSnackBar) { }
 
-  numberOfRows : number = 30;
+  numberOfRows : number = 21;
   flightPassangers : Passenger[];
   blockedSeats : string[] = [];
   // seats not used
