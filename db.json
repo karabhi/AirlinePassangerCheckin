@@ -9,7 +9,7 @@
       "wheelChair": false,
       "isInfant": false,
       "ancillaryServices": true,
-      "seatNo": "2C"
+      "seatNo": "2E"
     },
     {
       "id": "736388945",
@@ -54,6 +54,17 @@
       "isInfant": false,
       "ancillaryServices": false,
       "seatNo": "2B"
+    },
+    {
+      "id": "73647845",
+      "name": "test",
+      "age": "22",
+      "gender": "FEMALE",
+      "flightNo": "MT-4800",
+      "wheelChair": true,
+      "isInfant": false,
+      "ancillaryServices": true,
+      "seatNo": null
     }
   ],
   "ancillaryServices": [
@@ -85,6 +96,12 @@
       "id": "6356234",
       "specialMeal": false,
       "extraLuggage": false,
+      "extraLegSpace": false
+    },
+    {
+      "id": "73647845",
+      "specialMeal": false,
+      "extraLuggage": true,
       "extraLegSpace": false
     }
   ],
