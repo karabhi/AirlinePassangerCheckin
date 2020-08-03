@@ -1,6 +1,7 @@
 <div class="row" style="margin-top: 80px;"> 
-  <div *ngIf="loggedIn=='true'">
+  <div *ngIf="loggedIn=='admin'">
     <div class="col-xs-12">
+      
       <button mat-raised-button color="primary"
       [routerLink] = "['/passengers','edit','add']"
       >Add Passenger</button>
@@ -14,6 +15,7 @@
       [routerLink] = "['/passengers','edit','delete']"
       style="margin-left: 20px;"
       >Delete Passenger</button>
+      
     </div>
   </div>
 </div>

@@ -31,6 +31,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { environment } from '../environments/environment';
     SeatMapComponent,
     PageNotFoundComponent,
     PassengerEditComponent,
-    LoginComponent
+    LoginComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

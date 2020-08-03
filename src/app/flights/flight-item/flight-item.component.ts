@@ -4,7 +4,7 @@ import { Flight } from 'src/app/model/flight.model';
 @Component({
   selector: 'app-flight-item',
   templateUrl: './flight-item.component.html',
-  styleUrls: ['./flight-item.component.css']
+  styleUrls: ['./flight-item.component.scss']
 })
 export class FlightItemComponent implements OnInit {
 

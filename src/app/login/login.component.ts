@@ -7,7 +7,7 @@ import { LoginService } from './login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -22,8 +22,14 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     if(this.username==="admin" && this.password == "admin"){
       //localstorage code here
-      localStorage.setItem("loggedIn","true");
-      this.loginService.loginValue("true");
+      localStorage.setItem("loggedIn","admin");
+      this.loginService.loginValue("admin");
+      this.router.navigate(['flights']);
+    }
+    else if(this.username==="staff" && this.password == "staff"){
+      //localstorage code here
+      localStorage.setItem("loggedIn","staff");
+      this.loginService.loginValue("staff");
       this.router.navigate(['flights']);
     }
 

@@ -22,7 +22,7 @@ export class PassengerService implements OnInit{
 
     ngOnInit(){}
 
-    getPassengers(){
+    getPassengers():Passenger[]{
         return this.passengers.slice();
     }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PassengerService } from 'src/app/passengers/passenger.service';
 import { Passenger } from 'src/app/model/passenger.model';
 import { Seat } from 'src/app/model/seat.model';
@@ -14,7 +14,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SeatMapComponent implements OnInit {
 
-  constructor(private passengerService : PassengerService,private route : ActivatedRoute,private _snackBar: MatSnackBar) { }
+  constructor(private passengerService : PassengerService,
+              private route : ActivatedRoute,
+              private _snackBar: MatSnackBar,
+              private router:Router) { }
 
   passengers : Passenger[];
   ancillaryServices : AncillaryService[];
@@ -56,6 +59,12 @@ export class SeatMapComponent implements OnInit {
         this.blockedSeats.push(passenger.seatNo)
       }
     })
+
+    var loggedIn = localStorage.getItem("loggedIn");
+
+    if(loggedIn==null){
+      this.router.navigate(['login']);
+    }
   }
 
   // Onclick of any particular seat is handled here

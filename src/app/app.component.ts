@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PassengerService } from './passengers/passenger.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Passenger } from './model/passenger.model';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,13 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'airline-checkin-app';
+  passengers : Passenger[];
 
   constructor(private passengerService:PassengerService,private http: HttpClient, private router:Router){}
 
   ngOnInit(){
-    localStorage.setItem("loggedIn","false");
-    this.router.navigate(['']);
+    //localStorage.setItem("loggedIn",null);
+    //this.router.navigate(['']);
     this.http.get('http://localhost:3000/passengers').subscribe(
       (res : any[])=>{
           for(let i=0;i<res.length;i++){
@@ -46,5 +48,7 @@ export class AppComponent implements OnInit {
           }
       }
   );
+
+  setTimeout(()=>{this.passengers = this.passengerService.passengers},500);
   }
 }

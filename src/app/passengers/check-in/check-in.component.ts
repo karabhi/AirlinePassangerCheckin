@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Seat } from 'src/app/model/seat.model';
 import { PassengerService } from '../passenger.service';
 import { Passenger } from 'src/app/model/passenger.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
@@ -15,7 +15,8 @@ export class CheckInComponent implements OnInit {
 
   constructor( private passengerService : PassengerService,
                private route : ActivatedRoute,
-               private _snackBar: MatSnackBar) { }
+               private _snackBar: MatSnackBar,
+               private router : Router) { }
 
   numberOfRows : number = 21;
   flightPassangers : Passenger[];
@@ -44,6 +45,12 @@ export class CheckInComponent implements OnInit {
         this.blockedSeats.push(passenger.seatNo)
       }
     })
+
+    var loggedIn = localStorage.getItem("loggedIn");
+
+    if(loggedIn==null){
+      this.router.navigate(['login']);
+    }
     }
   
   //Check whether seat is blocked in the current flight

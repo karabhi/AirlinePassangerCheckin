@@ -57,6 +57,12 @@ export class PassengerEditComponent implements OnInit {
       'luggage' : new FormControl(false),
       'legSpace' : new FormControl(false)
     })
+
+    var loggedIn = localStorage.getItem("loggedIn");
+
+    if(loggedIn==null){
+      this.router.navigate(['login']);
+    }
   }
 
   onAddSubmit(){

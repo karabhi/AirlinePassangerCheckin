@@ -16,6 +16,12 @@ export class FlightsComponent implements OnInit {
 
   ngOnInit(): void {
     this.flights = this.flightService.getFlights();
+
+    var loggedIn = localStorage.getItem("loggedIn");
+
+    if(loggedIn==null){
+      this.router.navigate(['login']);
+    }
   }
 
 }

@@ -27,9 +27,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout(){
-    localStorage.setItem("loggedIn","false");
-    this.loggedIn = "false"
-    this.router.navigate(['/flights']);
+    localStorage.clear();
+    this.loggedIn = null
+    this.router.navigate(['/login']);
   }
 
   ngOnDestroy(){

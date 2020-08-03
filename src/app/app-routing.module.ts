@@ -7,15 +7,17 @@ import { SeatMapComponent } from './flights/seat-map/seat-map.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PassengerEditComponent } from './passengers/passenger-edit/passenger-edit.component';
 import { LoginComponent } from './login/login.component';
+import { AuthComponent } from './auth/auth.component';
 
 const appRoutes : Routes = [
-    {path: '', redirectTo : '/flights', pathMatch:'full'},
+    {path: '', redirectTo : '/login', pathMatch:'full'},
+    {path: 'login',component : LoginComponent},
     {path: 'flights', component : FlightsComponent},
     {path: 'flights/seatmap/:id', component : SeatMapComponent},
     {path: 'passengers', component : PassengersComponent},
     {path: 'passengers/edit/:operation', component : PassengerEditComponent},
     {path: 'passengers/checkin/:id', component : CheckInComponent},
-    {path: 'login',component : LoginComponent},
+    {path: 'auth',component : AuthComponent},
     {path: '404', component:PageNotFoundComponent},
     {path: '**', redirectTo:'/404',pathMatch:'full'}
 ]
