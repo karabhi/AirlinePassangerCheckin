@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor(private passengerService:PassengerService,private http: HttpClient, private router:Router){}
 
   ngOnInit(){
-      localStorage.clear()
+      //localStorage.clear()
     //localStorage.setItem("loggedIn",null);
     //this.router.navigate(['']);
     this.http.get('http://localhost:3000/passengers').subscribe(

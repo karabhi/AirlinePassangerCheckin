@@ -45,22 +45,33 @@
       "seatNo": "3C"
     },
     {
-      "id": "6356234",
-      "name": "abc",
-      "age": "66",
-      "gender": "MALE",
-      "flightNo": "MT-6713",
-      "wheelChair": true,
-      "isInfant": false,
-      "ancillaryServices": false,
-      "seatNo": "2B"
-    },
-    {
       "id": "73647845",
       "name": "test",
       "age": "22",
       "gender": "FEMALE",
       "flightNo": "MT-4800",
+      "wheelChair": true,
+      "isInfant": false,
+      "ancillaryServices": true,
+      "seatNo": null
+    },
+    {
+      "id": "745673456",
+      "name": "Adam",
+      "age": "42",
+      "gender": "MALE",
+      "flightNo": "MT-6713",
+      "wheelChair": true,
+      "isInfant": false,
+      "ancillaryServices": true,
+      "seatNo": null
+    },
+    {
+      "id": "23756283523",
+      "name": "Jerry",
+      "age": "22",
+      "gender": "MALE",
+      "flightNo": "MT-6713",
       "wheelChair": true,
       "isInfant": false,
       "ancillaryServices": true,
@@ -93,13 +104,19 @@
       "extraLegSpace": false
     },
     {
-      "id": "6356234",
+      "id": "73647845",
       "specialMeal": false,
-      "extraLuggage": false,
+      "extraLuggage": true,
       "extraLegSpace": false
     },
     {
-      "id": "73647845",
+      "id": "745673456",
+      "specialMeal": false,
+      "extraLuggage": false,
+      "extraLegSpace": true
+    },
+    {
+      "id": "23756283523",
       "specialMeal": false,
       "extraLuggage": true,
       "extraLegSpace": false

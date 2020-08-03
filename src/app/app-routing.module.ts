@@ -10,7 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './auth/auth.component';
 
 const appRoutes : Routes = [
-    {path: '', redirectTo : '/login', pathMatch:'full'},
+    {path: '', redirectTo : '/flights', pathMatch:'full'},
     {path: 'login',component : LoginComponent},
     {path: 'flights', component : FlightsComponent},
     {path: 'flights/seatmap/:id', component : SeatMapComponent},
@@ -23,7 +23,7 @@ const appRoutes : Routes = [
 ]
 
 @NgModule({
-    imports:[RouterModule.forRoot(appRoutes)],
+    imports:[RouterModule.forRoot(appRoutes,{useHash:true})],
     exports:[RouterModule] 
  })
  export class AppRoutingModule{}

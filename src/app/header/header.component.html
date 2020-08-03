@@ -20,6 +20,10 @@
             <span class="glyphicon glyphicon-log-in"></span>
             Logout
           </a>
+          <a [routerLink]="['/login']" *ngIf="loggedIn=='null'||loggedIn==null" style="cursor: pointer;">
+            <span class="glyphicon glyphicon-log-in"></span>
+            Login
+          </a>
         </li>
       </ul>
     </div>
