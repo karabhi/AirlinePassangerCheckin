@@ -42,7 +42,7 @@
       "wheelChair": true,
       "isInfant": true,
       "ancillaryServices": true,
-      "seatNo": "3C"
+      "seatNo": "1F"
     },
     {
       "id": "73647845",
@@ -86,7 +86,7 @@
       "wheelChair": true,
       "isInfant": false,
       "ancillaryServices": true,
-      "seatNo": "1C"
+      "seatNo": null
     },
     {
       "id": "84365873",
@@ -197,6 +197,94 @@
       "isInfant": false,
       "ancillaryServices": true,
       "seatNo": "3B"
+    },
+    {
+      "id": "8736538746534765",
+      "name": "Stuart Little",
+      "age": "18",
+      "gender": "MALE",
+      "flightNo": "MT-6713",
+      "wheelChair": false,
+      "isInfant": false,
+      "ancillaryServices": true,
+      "seatNo": "1E"
+    },
+    {
+      "id": "23502560256",
+      "name": "Bruce Lee",
+      "age": "43",
+      "gender": "MALE",
+      "flightNo": "MT-2915",
+      "wheelChair": true,
+      "isInfant": false,
+      "ancillaryServices": false,
+      "seatNo": "1B"
+    },
+    {
+      "id": "732764234",
+      "name": "syudfguysdfsd",
+      "age": "63",
+      "gender": "FEMALE",
+      "flightNo": "MT-6713",
+      "wheelChair": false,
+      "isInfant": false,
+      "ancillaryServices": false,
+      "seatNo": null
+    },
+    {
+      "id": "1111111111111",
+      "name": "TestCandidate",
+      "age": "23",
+      "gender": "FEMALE",
+      "flightNo": "MT-6713",
+      "wheelChair": false,
+      "isInfant": false,
+      "ancillaryServices": false,
+      "seatNo": null
+    },
+    {
+      "id": "222222222222",
+      "name": "TestCandidate2",
+      "age": "12",
+      "gender": "MALE",
+      "flightNo": "MT-6713",
+      "wheelChair": false,
+      "isInfant": false,
+      "ancillaryServices": false,
+      "seatNo": null
+    },
+    {
+      "id": "8483473465",
+      "name": "Tom",
+      "age": "43",
+      "gender": "MALE",
+      "flightNo": "MT-2915",
+      "wheelChair": false,
+      "isInfant": false,
+      "ancillaryServices": false,
+      "seatNo": null
+    },
+    {
+      "id": "76234764331",
+      "name": "Test",
+      "age": "23",
+      "gender": "MALE",
+      "flightNo": "MT-6713",
+      "wheelChair": false,
+      "isInfant": false,
+      "ancillaryServices": false,
+      "seatNo": null
+    },
+    {
+      "id": "62354267345",
+      "name": "New Passenger",
+      "age": "53",
+      "gender": "MALE",
+      "flightNo": "MT-6713",
+      "wheelChair": false,
+      "isInfant": false,
+      "ancillaryServices": false,
+      "seatNo": "2F"
     }
   ],
   "ancillaryServices": [
@@ -307,6 +395,54 @@
       "specialMeal": true,
       "extraLuggage": false,
       "extraLegSpace": false
+    },
+    {
+      "id": "8736538746534765",
+      "specialMeal": false,
+      "extraLuggage": true,
+      "extraLegSpace": false
+    },
+    {
+      "id": "23502560256",
+      "specialMeal": false,
+      "extraLuggage": false,
+      "extraLegSpace": false
+    },
+    {
+      "id": "732764234",
+      "specialMeal": false,
+      "extraLuggage": false,
+      "extraLegSpace": false
+    },
+    {
+      "id": "1111111111111",
+      "specialMeal": false,
+      "extraLuggage": false,
+      "extraLegSpace": false
+    },
+    {
+      "id": "222222222222",
+      "specialMeal": false,
+      "extraLuggage": false,
+      "extraLegSpace": false
+    },
+    {
+      "id": "8483473465",
+      "specialMeal": false,
+      "extraLuggage": false,
+      "extraLegSpace": false
+    },
+    {
+      "id": "76234764331",
+      "specialMeal": false,
+      "extraLuggage": false,
+      "extraLegSpace": false
+    },
+    {
+      "id": "62354267345",
+      "specialMeal": false,
+      "extraLuggage": false,
+      "extraLegSpace": false
     }
   ],
   "flights": [
@@ -327,6 +463,48 @@
       "departureAirport": "BOM",
       "departureTime": "22:00",
       "imagePath": "../../../assets/flight3.jpg"
+    }
+  ],
+  "uselessInfo": [
+    {
+      "id": "3453534234",
+      "dateOfBirth": "test123",
+      "address": "test address"
+    },
+    {
+      "id": "8736538746534765",
+      "dateOfBirth": "2020-09-14T18:30:00.000Z",
+      "address": "22B Baker Streets"
+    },
+    {
+      "id": "23502560256",
+      "dateOfBirth": null,
+      "address": null
+    },
+    {
+      "id": "1111111111111",
+      "dateOfBirth": "2020-08-05T18:30:00.000Z",
+      "address": null
+    },
+    {
+      "id": "222222222222",
+      "dateOfBirth": "2020-08-10T18:30:00.000Z",
+      "address": "sdifsduyfgsdyfd"
+    },
+    {
+      "id": "8483473465",
+      "dateOfBirth": "2020-08-02T18:30:00.000Z",
+      "address": "safasd"
+    },
+    {
+      "id": "76234764331",
+      "dateOfBirth": 19,
+      "address": null
+    },
+    {
+      "id": "62354267345",
+      "dateOfBirth": "2016-06-14T18:30:00.000Z",
+      "address": null
     }
   ]
 }

@@ -5,6 +5,7 @@ import { Passenger } from '../model/passenger.model';
 import { PassengerService } from './passenger.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { UselessInfo } from '../model/useless-info.model';
 
 @Component({
   selector: 'app-passengers',
@@ -15,6 +16,10 @@ export class PassengersComponent implements OnInit {
   
   loggedIn : string;
   public passengers : Passenger[];
+  missingInfoFlag : boolean = false;
+  uselessInfo : UselessInfo[];
+
+  passengersWithMissingInfo : UselessInfo[] = [];
   // public passengers : Passenger[]=this.passengerService.getPassengers();
 
   //subscription : Subscription
@@ -36,6 +41,8 @@ export class PassengersComponent implements OnInit {
     
     this.passengers = this.passengerService.getPassengers();
     this.dataSource = new MatTableDataSource(this.passengers);
+
+    this.uselessInfo = this.passengerService.getUselessInfo();
     
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -47,5 +54,21 @@ export class PassengersComponent implements OnInit {
     // this.subscription = this.passengerService.passengersChanged.subscribe(
     //   (passengers:Passenger[])=>{this.passengers = passengers}
     // )
+
+    for(let i=0; i<this.uselessInfo.length;i++){
+      if(this.uselessInfo[i].address == null || this.uselessInfo[i].dateOfBirth == null){
+        this.passengersWithMissingInfo.push(this.uselessInfo[i])
+      }
+    }
+  }
+
+  checkName(passNo : string){
+    return this.passengers.find(x=>x.passportNumber == passNo).name;
+  }
+
+  onMissingDetailsSave(passNo:string,dob:string,address:string){
+    // console.log(passNo +"  "+ dob+"  " + address)
+    this.passengerService.editUselessInfo(passNo,dob,address);
+    this.missingInfoFlag = false;
   }
 }

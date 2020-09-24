@@ -102,6 +102,10 @@ export class SeatMapComponent implements OnInit {
     }
   }
 
+  wheelchairOrInfant(seat : string):string{
+    return this.passengerService.checkWheelchairOrInfant(seat,this.flightNumber);
+  }
+
   // ngOnDestroy(){
   //   this.subscription.unsubscribe();
   // }

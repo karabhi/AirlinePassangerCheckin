@@ -55,6 +55,20 @@
       </div>
 
       <mat-form-field class="form-field">
+        <mat-label>Enter date of birth</mat-label>
+          <!-- #docregion toggle -->
+          <input matInput [matDatepicker]="picker" formControlName = "dateOfBirth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <!-- #enddocregion toggle -->
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
+        <mat-label>Address</mat-label>
+        <textarea matInput formControlName = "address"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="form-field">
         <mat-label>Flight Number</mat-label>
         <mat-select formControlName = "flightNo">
           <mat-option *ngFor="let flightId of flightIds" [value]="flightId" >

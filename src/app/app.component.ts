@@ -50,6 +50,18 @@ export class AppComponent implements OnInit {
       }
   );
 
+  this.http.get('http://localhost:3000/uselessInfo').subscribe(
+      (res : any[])=>{
+          for(let k=0;k<res.length;k++){
+              this.passengerService.uselessInfo.push({
+                  passportNumber : res[k].id,
+                  dateOfBirth :  res[k].dateOfBirth,
+                  address : res[k].address
+              })
+          }
+      }
+  );
+
   setTimeout(()=>{this.passengers = this.passengerService.passengers},500);
   }
 }

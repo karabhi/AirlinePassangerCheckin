@@ -1,6 +1,6 @@
 <!-- Heading -->
 
-<h1 style="margin-bottom: 26px;margin-top: 80px;">Seat map for flight: {{flightNumber}}</h1>
+<h1 style="margin-bottom: 26px;margin-top: 80px;"><span style="color: rgb(189, 14, 122); font-weight:bold ;"> Click on seat </span> to see more details</h1>
 
 
 <!-- Seatmap -->
@@ -13,21 +13,39 @@
             <div class="col-md-6">
                 <div class="outer-seat" id="div-inline">
                     <div class="inner-seat" 
-                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'A')}"
+                    [ngClass]=
+                    "{
+                      'blocked-wheelchair' : wheelchairOrInfant((rowNumb+1)+'A') == 'WHEELCHAIR',
+                      'blocked-infant' : wheelchairOrInfant((rowNumb+1)+'A') == 'INFANT',
+                      'blocked-both' : wheelchairOrInfant((rowNumb+1)+'A') == 'BOTH',
+                      'blocked-seat' : checkSeatBlocked((rowNumb+1)+'A')
+                     }"
                         (click)="onSeatSelected((rowNumb+1)+'A')">
                         {{rowNumb+1}}A
                     </div>
                 </div>
                 <div class="outer-seat" id="div-inline">
                     <div class="inner-seat" 
-                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'B')}"
+                        [ngClass]=
+                            "{
+                              'blocked-wheelchair' : wheelchairOrInfant((rowNumb+1)+'B') == 'WHEELCHAIR',
+                              'blocked-infant' : wheelchairOrInfant((rowNumb+1)+'B') == 'INFANT',
+                              'blocked-both' : wheelchairOrInfant((rowNumb+1)+'B') == 'BOTH',
+                              'blocked-seat' : checkSeatBlocked((rowNumb+1)+'B')
+                             }"
                         (click)="onSeatSelected((rowNumb+1)+'B')">
                         {{rowNumb+1}}B
                     </div>
                 </div>
                 <div class="outer-seat" id="div-inline">
                     <div class="inner-seat" 
-                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'C')}"
+                    [ngClass]=
+                    "{
+                      'blocked-wheelchair' : wheelchairOrInfant((rowNumb+1)+'C') == 'WHEELCHAIR',
+                      'blocked-infant' : wheelchairOrInfant((rowNumb+1)+'C') == 'INFANT',
+                      'blocked-both' : wheelchairOrInfant((rowNumb+1)+'C') == 'BOTH',
+                      'blocked-seat' : checkSeatBlocked((rowNumb+1)+'C')
+                     }"
                         (click)="onSeatSelected((rowNumb+1)+'C')">
                         {{rowNumb+1}}C
                     </div>
@@ -39,21 +57,39 @@
             <div class="col-md-6">
                 <div class="outer-seat" id="div-inline">
                     <div class="inner-seat" 
-                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'D')}"
+                    [ngClass]=
+                    "{
+                      'blocked-wheelchair' : wheelchairOrInfant((rowNumb+1)+'D') == 'WHEELCHAIR',
+                      'blocked-infant' : wheelchairOrInfant((rowNumb+1)+'D') == 'INFANT',
+                      'blocked-both' : wheelchairOrInfant((rowNumb+1)+'D') == 'BOTH',
+                      'blocked-seat' : checkSeatBlocked((rowNumb+1)+'D')
+                     }"
                         (click)="onSeatSelected((rowNumb+1)+'D')">
                         {{rowNumb+1}}D
                     </div>
                 </div>
                 <div class="outer-seat" id="div-inline">
                     <div class="inner-seat" 
-                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'E')}"
+                    [ngClass]=
+                    "{
+                      'blocked-wheelchair' : wheelchairOrInfant((rowNumb+1)+'E') == 'WHEELCHAIR',
+                      'blocked-infant' : wheelchairOrInfant((rowNumb+1)+'E') == 'INFANT',
+                      'blocked-both' : wheelchairOrInfant((rowNumb+1)+'E') == 'BOTH',
+                      'blocked-seat' : checkSeatBlocked((rowNumb+1)+'E')
+                     }"
                         (click)="onSeatSelected((rowNumb+1)+'E')">
                         {{rowNumb+1}}E
                     </div>
                 </div>
                 <div class="outer-seat" id="div-inline">
                     <div class="inner-seat" 
-                        [ngClass]="{'blocked-seat' : checkSeatBlocked((rowNumb+1)+'F')}"
+                    [ngClass]=
+                    "{
+                      'blocked-wheelchair' : wheelchairOrInfant((rowNumb+1)+'F') == 'WHEELCHAIR',
+                      'blocked-infant' : wheelchairOrInfant((rowNumb+1)+'F') == 'INFANT',
+                      'blocked-both' : wheelchairOrInfant((rowNumb+1)+'F') == 'BOTH',
+                      'blocked-seat' : checkSeatBlocked((rowNumb+1)+'F')
+                     }"
                         (click)="onSeatSelected((rowNumb+1)+'F')">
                         {{rowNumb+1}}F
                     </div>
@@ -117,12 +153,46 @@
                 </div>
 
               </mat-card-content>
-              <mat-card-actions>
+              <!-- <mat-card-actions>
                 <button mat-button color = "warn">EMERGENCY</button>
-              </mat-card-actions>
+              </mat-card-actions> -->
         </mat-card>
-        <button mat-raised-button color="accent" style="margin-top: 30px;" [routerLink] = "['/flights']">
+        <button mat-raised-button color="accent" style="margin-top: 10px;" [routerLink] = "['/flights']">
              <i class="fas fa-undo"></i> Check for another flight
         </button>
+        <mat-card style="margin-top: 10px;">
+            <mat-card-header>
+                <h3 style="font-weight: bold; color: rgb(4, 110, 110);">Legend : </h3>
+            </mat-card-header>
+
+            <div style="display: inline-flex;padding: 10px;">
+                <p style="width: 10px; 
+                height: 10px; 
+                background-color: #e43737f5;
+                margin-right: 5px;"></p>
+                <p>General Seat</p>
+            </div>
+            <div style="display: inline-flex;padding: 10px;">
+                <p style="width: 10px; 
+                height: 10px; 
+                background-color: purple;
+                margin-right: 5px;"></p>
+                <p>Wheelchair Seat</p>
+            </div>
+            <div style="display: inline-flex;padding: 10px;">
+                <p style="width: 10px; 
+                height: 10px; 
+                background-color: rgb(13, 212, 226);
+                margin-right: 5px;"></p>
+                <p>Infant Seat</p>
+            </div>
+            <div style="display: inline-flex;padding: 10px;">
+                <p style="width: 10px; 
+                height: 10px; 
+                background-color:yellow;
+                margin-right: 5px;"></p>
+                <p>Infant + Wheelchair</p>
+            </div>
+        </mat-card>
     </div>
 </div>

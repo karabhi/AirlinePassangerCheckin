@@ -3,6 +3,7 @@ import { Passenger } from '../model/passenger.model';
 import { Subject } from 'rxjs';
 import { AncillaryService } from '../model/ancillary-service.model';
 import { HttpClient } from "@angular/common/http";
+import { UselessInfo } from '../model/useless-info.model';
 
 
 // const passengers2 : Passenger[] = [
@@ -17,6 +18,7 @@ export class PassengerService implements OnInit{
     
     passengers:Passenger[]=[];
     ancillaryServices:AncillaryService[] = [];
+    uselessInfo : UselessInfo[] = [];
 
     constructor(private http : HttpClient){}
 
@@ -39,6 +41,27 @@ export class PassengerService implements OnInit{
         return this.passengers.find(passenger => passenger.passportNumber === passId).seatNo;
     }
 
+    checkWheelchairOrInfant(seat : string, flightNo : string) : string{
+        let passenger = this.passengers.find(passenger => passenger.flightNo == flightNo && passenger.seatNo == seat);
+        if(passenger == null){
+            return null
+        }
+        else if(passenger.wheelChair&&passenger.isInfant){
+            return "BOTH";
+        }
+        else if(passenger.wheelChair){
+            return "WHEELCHAIR";
+        }
+        else if(passenger.isInfant){
+            return "INFANT"
+        }
+        else return null;
+    }
+
+    getUselessInfo():UselessInfo[]{
+        return this.uselessInfo.slice();
+    }
+
     // -------------------------Update Operation--------------------------------
     setPassengerSeat(passengerId:string,newSeat:string){
         let passengerSeatAssigned = this.passengers.find(passenger => passenger.passportNumber === passengerId);
@@ -58,6 +81,23 @@ export class PassengerService implements OnInit{
         }).subscribe((res)=>console.log("set seat entered"));
     }
 
+    clearPassengerSeat(passengerId : string){
+        let passengerSeatAssigned = this.passengers.find(passenger => passenger.passportNumber === passengerId);
+        passengerSeatAssigned.seatNo = null;
+        this.passengerSeatChanged.next(null);
+
+        this.http.put("http://localhost:3000/passengers/"+passengerId,{
+            "id": passengerSeatAssigned.passportNumber,
+            "name": passengerSeatAssigned.name,
+            "age": passengerSeatAssigned.age,
+            "gender": passengerSeatAssigned.gender,
+            "flightNo": passengerSeatAssigned.flightNo,
+            "wheelChair": passengerSeatAssigned.wheelChair,
+            "isInfant": passengerSeatAssigned.isInfant,
+            "ancillaryServices": passengerSeatAssigned.ancillaryServices,
+            "seatNo": passengerSeatAssigned.seatNo
+        }).subscribe((res)=>console.log("passenger seat cleared"));
+    }
 
     getAncillaryServices(){
         return this.ancillaryServices.slice();
@@ -99,6 +139,25 @@ export class PassengerService implements OnInit{
             "extraLuggage": service.extraLuggage,
             "extraLegSpace": service.extraLegSpace
         }).subscribe((res)=>console.log("add ancillary service entered"));
+    }
+
+    addUselessInfo(info : UselessInfo){
+        this.uselessInfo.push(info);
+        this.http.post("http://localhost:3000/uselessInfo",{
+            "id": info.passportNumber,
+            "dateOfBirth": info.dateOfBirth,
+            "address": info.address
+        }).subscribe((res)=>console.log("nullable info entered"));
+    }
+
+    editUselessInfo(passNo:string,dob:string,address:string){
+        this.uselessInfo.find(x=>x.passportNumber == passNo).dateOfBirth = dob;
+        this.uselessInfo.find(x=>x.passportNumber == passNo).address = address;
+        this.http.put("http://localhost:3000/uselessInfo/"+passNo,{
+            "id": passNo,
+            "dateOfBirth": dob,
+            "address": address
+        }).subscribe((res)=>console.log("nullable info edited"));
     }
 
     deletePassenger(passportNumber:string){

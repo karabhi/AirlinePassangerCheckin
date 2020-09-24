@@ -19,6 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule, MatCheckboxChange} from '@angular/material/checkbox';
@@ -59,7 +61,9 @@ import { AuthComponent } from './auth/auth.component';
     MatButtonModule,
     MatSnackBarModule,
     MatDividerModule,
+    MatNativeDateModule,
     MatCardModule,
+    MatDatepickerModule,
     MatInputModule,
     MatRadioModule,
     MatSelectModule,

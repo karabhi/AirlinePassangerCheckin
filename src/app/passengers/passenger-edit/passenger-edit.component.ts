@@ -8,6 +8,7 @@ import { AncillaryService } from 'src/app/model/ancillary-service.model';
 import { Subscriber } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UselessInfo } from 'src/app/model/useless-info.model';
 
 @Component({
   selector: 'app-passenger-edit',
@@ -48,6 +49,8 @@ export class PassengerEditComponent implements OnInit {
       'age' : new FormControl(null, [Validators.required]),
       'gender' : new FormControl('MALE'),
       'flightNo' : new FormControl(null, [Validators.required]),
+      'dateOfBirth' : new FormControl(null),
+      'address' : new FormControl(null),
       
       'wheelchair' : new FormControl(false),
       'infant' : new FormControl(false),
@@ -67,7 +70,9 @@ export class PassengerEditComponent implements OnInit {
 
   onAddSubmit(){
     console.log(this.passengerForm);
+    
     const formValues = this.passengerForm.value;
+    
     const passengerInfo = new Passenger(
       formValues.passNo.toString(),
       formValues.name,
@@ -78,15 +83,24 @@ export class PassengerEditComponent implements OnInit {
       formValues.infant,
       formValues.ancillaryServices,
       null);
+    
     const passengerServiceInfo = new AncillaryService(
       formValues.passNo,
       formValues.meal,
       formValues.luggage,
       formValues.legSpace
+      );
+
+    let uselessInfo = new UselessInfo(
+      formValues.passNo.toString(),
+      formValues.dateOfBirth,
+      formValues.address
     )
 
     this.passengerService.addPassenger(passengerInfo);
     this.passengerService.addPassengerServices(passengerServiceInfo);
+    this.passengerService.addUselessInfo(uselessInfo);
+
     this.router.navigate(['/passengers']);
     console.log(this.passengerService.getPassengers());
   }

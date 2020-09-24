@@ -90,6 +90,10 @@ export class CheckInComponent implements OnInit {
     )
   }
 
+  onCheckoutSelected(){
+    this.passengerService.clearPassengerSeat(this.route.snapshot.queryParams.passId)
+  }
+
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }

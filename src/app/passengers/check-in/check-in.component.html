@@ -81,7 +81,13 @@
                 <button mat-raised-button color="primary"
                         style="margin-top: 5px;margin-bottom: 5px;margin-left: 20px;"
                         [routerLink]="['/passengers']">
-                    Save and Return
+                    SAVE Seat and Return
+                </button>
+                <button mat-raised-button color="warn"
+                        style="margin-top: 5px;margin-bottom: 5px;margin-left: 20px;"
+                        (click) = "onCheckoutSelected()"
+                        [routerLink]="['/passengers']">
+                    CHECKOUT Seat and Return
                 </button>
               </mat-card-actions>
         </mat-card>
